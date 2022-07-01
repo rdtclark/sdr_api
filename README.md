@@ -1,30 +1,30 @@
 # Campaigns and Investments API (candi)
 
-Candi is a simple API designed to list camapigns and create investments.
+Candi is a simple API designed to list campaigns and create investments.
 
 It is an [API only rails application](https://guides.rubyonrails.org/api_app.html) with data stored in a Postgresql database.
 
 ### System dependencies
 
-* Ruby: 3.2.1
+* Ruby: 3.1.2
 * Rails: 7.0.3 
 * Postgresql
 
 ### Steps to install
 
-* clone this repo 
+1. clone this repo 
 ```bash
-git clone https://github.com/rdtclark/candi.git candi && cd candi
+git clone https://github.com/rdtclark/sdr_api.git candi && cd candi
 ```
-* install dependencies
+2. install dependencies
 ```bash
 bundle install
 ```
-* prepare database
+3. prepare database
 ```bash
 rails db:prepare
 ```
-* run rails server
+4. run rails server
 ```bash
 rails server
 ```
@@ -45,12 +45,12 @@ InvestmentTest#test_should_create_investment_with_valid_data = 0.00 s = .
 ```
 
 ### How to use
-* to list all campaigns visit http://localhost:3000/api/v1/campaigns or use curl as below
+To list all campaigns visit http://localhost:3000/api/v1/campaigns or use curl as below
 ```bash
 curl --request GET \
   --url http://localhost:3000/api/v1/campaigns
 ```
-* to create an investment using curl in your Terminal
+To create an investment using curl in your Terminal
 ```bash
 curl --request POST \
 --url http://localhost:3000/api/v1/investments \
@@ -61,29 +61,60 @@ curl --request POST \
 }'
 ```
 
-### How to run locally using Docker
+### (Stretch 1) How to run locally using Docker
 
-* Install Docker here: https://docs.docker.com/get-docker/
+1. Install Docker here: https://docs.docker.com/get-docker/
 
-* Generate rails skeleton app
+2. Generate rails skeleton app
 ```bash
 docker compose run --no-deps web rails new . --force --database=postgresql
 ```
-* Linux Only: (change the ownership of the new files, otherwise they are owned by the root user)
+3. Linux Only: (change the ownership of the new files, otherwise they are owned by the root user)
 ```bash
 sudo chown -R $USER:$USER .
 ```
-* Now Gemfile is created, build image
+4. Now Gemfile is created, build image
 ```bash
 docker compose build
 ```
-* This deployment has its own rails environment so we can bring up the app now. Note the port number is 3001.
+5. This deployment has its own rails environment so we can bring up the app now. Note the port number is 3001, and differs for the non-dockerized version.
 ```bash
 docker compose up
 # http://localhost:3001/api/v1/campaigns
-# recommended soundtrack: https://open.spotify.com/track/6ByN6v7D5YUogv622VMGrk 🥁
+
+# recommended soundtrack: 
+# Swedish House Mafia - Calling On 
+# 🔊 https://open.spotify.com/track/6ByN6v7D5YUogv622VMGrk 🥁
 ```
-* All that remains is to prepare the database
+6. All that remains is to prepare the database
 ```bash
 docker compose run web rake db:prepare
+```
+
+### (Stretch 2) How would you modify your data model and API if you had to filter the campaigns by different properties 
+
+#### Data Model
+* Validate properties against a constant with an array of options e.g. Sector, Country.
+
+#### API
+* Create some scopes to more easily handle filtering
+```ruby
+# Campaign Model
+scope :filter_by_sector, -> (sector) { where sector: sector }
+scope :filter_by_country, -> (country) { where country: country }
+
+# Campaign Controller
+@campigns = Campaign.where(nil)
+@products = @products.sector(params[:sector]) if params[:sector].present?
+@products = @products.filter_by_country(params[:country]) if params[:country].present?
+
+# http://localhost.com/api/v1/campaigns?sector=Science&country=UK
+```
+* Consider caching to improve performance of percentage_raised method 
+```ruby
+def percentage_raised
+  Rails.cache.fetch([self, :percentage_raised]) do
+  ...
+  end
+end
 ```
