@@ -66,30 +66,30 @@ curl --request POST \
 1. Install Docker here: https://docs.docker.com/get-docker/
 
 2. Generate rails skeleton app
-```bash
-docker compose run --no-deps web rails new . --force --database=postgresql
-```
+  ```bash
+  docker compose run --no-deps web rails new . --force --database=postgresql
+  ```
 3. Linux Only: (change the ownership of the new files, otherwise they are owned by the root user)
-```bash
-sudo chown -R $USER:$USER .
-```
+  ```bash
+  sudo chown -R $USER:$USER .
+  ```
 4. Now Gemfile is created, build image
-```bash
-docker compose build
-```
+  ```bash
+  docker compose build
+  ```
 5. This deployment has its own rails environment so we can bring up the app now. Note the port number is 3001, and differs for the non-dockerized version.
-```bash
-docker compose up
-# http://localhost:3001/api/v1/campaigns
+  ```bash
+  docker compose up
+  # http://localhost:3001/api/v1/campaigns
 
-# recommended soundtrack: 
-# Swedish House Mafia - Calling On 
-# 🔊 https://open.spotify.com/track/6ByN6v7D5YUogv622VMGrk 🥁
-```
+  # recommended soundtrack: 
+  # Swedish House Mafia - Calling On 
+  # 🔊 https://open.spotify.com/track/6ByN6v7D5YUogv622VMGrk 🥁
+  ```
 6. All that remains is to prepare the database
-```bash
-docker compose run web rake db:prepare
-```
+  ```bash
+  docker compose run web rake db:prepare
+  ```
 
 ### (Stretch 2) How would you modify your data model and API if you had to filter the campaigns by different properties 
 
