@@ -102,11 +102,13 @@ docker compose run web rake db:prepare
 # Campaign Model
 scope :filter_by_sector, -> (sector) { where sector: sector }
 scope :filter_by_country, -> (country) { where country: country }
-
+```
+* Update controller to add query params, e.g.
+```ruby
 # Campaign Controller
 @campigns = Campaign.where(nil)
-@products = @products.sector(params[:sector]) if params[:sector].present?
-@products = @products.filter_by_country(params[:country]) if params[:country].present?
+@campaigns = @campaigns.sector(params[:sector]) if params[:sector].present?
+@campaigns = @campaigns.filter_by_country(params[:country]) if params[:country].present?
 
 # http://localhost.com/api/v1/campaigns?sector=Science&country=UK
 ```
