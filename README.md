@@ -61,7 +61,7 @@ curl --request POST \
 }'
 ```
 
-### (Stretch 1) How to run locally using Docker
+### How to run locally using Docker
 
 1. Install Docker here: https://docs.docker.com/get-docker/
 
@@ -91,7 +91,7 @@ curl --request POST \
   docker compose run web rake db:prepare
   ```
 
-### (Stretch 2) How would you modify your data model and API if you had to filter the campaigns by different properties 
+### TODO: Modifcations to filter campaigns by different properties 
 
 #### Data Model
 * Validate properties against a constant with an array of options e.g. Sector, Country.
