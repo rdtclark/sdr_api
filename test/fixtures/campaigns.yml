@@ -1,0 +1,13 @@
+one:
+  name: C2H20
+  image: http://www.flickr.com/image.jpeg
+  sector: Science
+  country: UK
+  investment_multiplier: 2
+
+two:
+  name: Fat Free Doughnuts Direct
+  image: http://www.flickr.com/image.jpeg
+  sector: Food
+  country: USA
+  investment_multiplier: 547

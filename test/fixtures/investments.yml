@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign: one
+  total_multiples_invested: 100
+
+two:
+  campaign: two
+  total_multiples_invested: 50
+
+three:
+  campaign: two
+  total_multiples_invested: 150
