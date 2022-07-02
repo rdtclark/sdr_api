@@ -81,7 +81,7 @@ curl --request POST \
   ```bash
   docker compose build
   ```
-5. This deployment has its own rails environment so we can bring up the app now. Note the port number is 3001, and differs for the non-dockerized version.
+5. We can bring up the app now. Note the port number is 3001, and differs for the non-dockerized version.
   ```bash
   docker compose up
   # http://localhost:3001/api/v1/campaigns
