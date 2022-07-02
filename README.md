@@ -47,8 +47,12 @@ InvestmentTest#test_should_create_investment_with_valid_data = 0.00 s = .
 ### How to use
 To list all campaigns visit http://localhost:3000/api/v1/campaigns or use curl as below
 ```bash
+# in groups of 10
 curl --request GET \
   --url http://localhost:3000/api/v1/campaigns
+# in pages
+curl --request GET \
+  --url http://localhost:3000/api/v1/campaigns/page/2
 ```
 To create an investment using curl in your Terminal
 ```bash
