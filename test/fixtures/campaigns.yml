@@ -3,11 +3,12 @@ one:
   image: http://www.flickr.com/image.jpeg
   sector: Science
   country: UK
-  investment_multiplier: 2
+  investment_multiplier: 200
 
 two:
-  name: Fat Free Doughnuts Direct
+  name: Campaign2
   image: http://www.flickr.com/image.jpeg
   sector: Food
   country: USA
   investment_multiplier: 547
+

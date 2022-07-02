@@ -2,7 +2,7 @@
 
 Candi is a simple API designed to list campaigns and create investments.
 
-It is an [API only rails application](https://guides.rubyonrails.org/api_app.html) with data stored in a Postgresql database.
+It's an [API only rails application](https://guides.rubyonrails.org/api_app.html) with data stored in a Postgresql database.
 
 ### System dependencies
 
@@ -35,11 +35,11 @@ rails test -v
 ```
 Example output
 ```bash
-CampaignTest#test_campaign_should_be_valid = 0.04 s = .
-CampaignTest#test_perecentage_raised_should_be_correct = 0.00 s = .
+ApiV1CampaignsControllerTest#test_should_limit_results_to_max_of_10_campaigns_per_request = 0.22 s = .
+ApiV1CampaignsControllerTest#test_should_get_index = 0.00 s = .
 CampaignTest#test_campaign_can_have_many_investments = 0.00 s = .
-CampaignTest#test_should_get_paginated_index = 0.00 s = .
-CampaignTest#test_percentage_raised_should_update_upon_new_investment = 0.00 s = .
+CampaignTest#test_campaign_should_be_valid = 0.00 s = .
+CampaignTest#test_perecentage_raised_should_be_correct = 0.00 s = .
 InvestmentTest#test_total_multiples_invested_should_be_a_whole_number = 0.00 s = .
 InvestmentTest#test_should_create_investment_with_valid_data = 0.00 s = .
 ```

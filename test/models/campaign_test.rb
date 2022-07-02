@@ -34,13 +34,4 @@ class CampaignTest < ActiveSupport::TestCase
   test "perecentage raised should be correct" do
     assert_equal 10.00, @campaign_1.percentage_raised
   end
-
-  test "percentage raised should update upon new investment" do
-    # assert pecentage updated after
-  end
-
-  test "should get paginated index" do
-    # get campaigns_url
-    # assert_response :success
-  end
 end
